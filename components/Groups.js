@@ -5,8 +5,6 @@ import { Icon } from '@gluestack-ui/themed';
 import Ionicons from '@expo/vector-icons/Ionicons'
 import AntDesign from '@expo/vector-icons/AntDesign'
 
-
-
 //Groups Component
 const Groups = () => {
 
@@ -15,6 +13,11 @@ const Groups = () => {
   //Group Item contains Text
   <TouchableOpacity style={styles.group}>
     <Text style={styles.groupName}>{item.name}</Text>
+    {item.notifications > 0 && (
+      <View style={styles.notificationBubble}>
+        <Text style={styles.notificationText}>{item.notifications}</Text>
+      </View>
+    )}
   </TouchableOpacity>
 );
 
@@ -91,20 +94,34 @@ export const styles = StyleSheet.create({
     paddingBottom: 20, // Space at the bottom
    },
   group: { 
+    position: 'relative',
     backgroundColor: '#c8c2c2', // Example background color
     borderRadius: 10, // Rounded corners
     width: '100%', // 80% of screen width (taking paddingHorizontal into account)
     padding: 45, // Padding inside each item
-    marginBottom: 15, // Space between items
+    marginBottom: 20, // Space between items
     alignItems: 'center', // Center content horizontally
    },
-  groupName: {/* styles for group name */},
-  avatar: { /* styles for avatar image */ },
   groupName: { 
     fontSize: 20,
     fontWeight: 'bold',
     color: 'green',
    },
+   notificationBubble: {
+    position: 'absolute',
+    top: -15,
+    right: -5,
+    backgroundColor: '#ed8224', // Notification bubble color
+    borderRadius: 13, // Rounded corners
+    padding: 17, // Adjust as needed
+    minWidth: 20, // Ensures the bubble is somewhat square-shaped
+    alignItems: 'center', // Centers the text horizontally
+    justifyContent: 'center', // Centers the text vertically
+  },
+  notificationText: {
+    color: 'white',
+    fontSize: 20, // Adjust as needed
+  },
   createSnipeButton: {
     position: 'absolute',
     bottom: 20, 
@@ -122,7 +139,7 @@ export const styles = StyleSheet.create({
   },
   snipeButtonText: {
     color: 'white',
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: 'bold',
   }
 });
@@ -130,26 +147,32 @@ export const styles = StyleSheet.create({
 const groups = [{
       id: '1',
       name: 'For The Plot',
+      notifications: 3,
     },
     {
       id: '2',
-      name: 'Buck it We Fall'
+      name: 'Buck it We Fall',
+      notifications: 2
     },
     {
       id: '3',
-      name: 'Plegends'
+      name: 'Plegends',
+      notifications: 0
     },
     {
       id: '4',
-      name: 'asr buds'
+      name: 'asr buds',
+      notifications: 0
     },
     {
       id: '5',
-      name: 'Main Lin'
+      name: 'Main Lin',
+      notifications: 0
     },
     {
       id: '6',
       name: 'QAM',
+      notifications: 0
     }
     // more groups...
 ];
