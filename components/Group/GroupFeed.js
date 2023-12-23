@@ -75,7 +75,7 @@ const posts = [
     caption: ' were sniped by agnesm at East Quad',
     image: require('../../assets/GroupFeed/eastquad.jpg'),
     likes: 6,
-    comments: 3,
+    comments: 4,
     timestamp: '',
 
 },
@@ -151,7 +151,7 @@ export const styles = StyleSheet.create({
         width: '80%',
         alignSelf: 'center',
         marginBottom: 15,
-        overflow: 'hidden',
+        overflow: 'wrap',
         backgroundColor: '#FFF'
     },
 
